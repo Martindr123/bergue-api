@@ -1,0 +1,59 @@
+# .gitignore
+
+# Ignorer les fichiers .env (où on stocke les secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dépendances
+/node_modules
+/.pnp
+.pnp.js
+/vendor
+
+# Fichiers de build et de production
+/build
+/dist
+/out
+/.next
+/.nuxt
+
+# Fichiers de cache
+.cache
+.parcel-cache
+.npm
+.eslintcache
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Éditeurs et IDE
+/.idea
+/.vscode
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Tests et couverture
+/coverage
+/.nyc_output
+.jest-cache
+
+# Fichiers temporaires
+*.tmp
+*.temp

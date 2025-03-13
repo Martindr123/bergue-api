@@ -1,0 +1,12 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+python-dotenv==1.0.0
+openai==1.55.3
+pdfplumber==0.10.3 
+python-docx==1.0.1
+docxtpl==0.16.7
+pydantic==2.5.1
+python-multipart==0.0.6
+httpx==0.28.0
+requests==2.28.2
+python-jose[cryptography]>=3.3.0
