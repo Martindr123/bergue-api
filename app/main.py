@@ -32,13 +32,13 @@ app.add_middleware(
 )
 
 # Montons le build React si on est en production:
-BUILD_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "app_bergue", "frontend", "build")
+# BUILD_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "app_bergue", "frontend", "build")
 
-if not os.path.exists(BUILD_DIR):
-    raise FileNotFoundError(
-        f"Le dossier de build '{BUILD_DIR}' n'existe pas. "
-        "Veuillez exécuter 'npm run build' dans le dossier frontend avant de lancer l'API."
-    )
+# if not os.path.exists(BUILD_DIR):
+#     raise FileNotFoundError(
+#         f"Le dossier de build '{BUILD_DIR}' n'existe pas. "
+#         "Veuillez exécuter 'npm run build' dans le dossier frontend avant de lancer l'API."
+#     )
 
 # Cela permet de servir le front via FastAPI en production
 
