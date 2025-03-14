@@ -3,6 +3,8 @@ import os
 import io
 import json
 import uuid
+import uvicorn
+
 import pdfplumber
 from fastapi import FastAPI, UploadFile, File, Form, Depends, HTTPException, Request
 from fastapi.responses import FileResponse, StreamingResponse, HTMLResponse
@@ -151,3 +153,7 @@ async def generate_document(
 #         return FileResponse(index_path)
 #     else:
 #         raise HTTPException(status_code=404, detail="Not Found")
+
+
+if __name__ == "__main__":
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
