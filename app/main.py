@@ -27,7 +27,7 @@ app = FastAPI()
 # Configuration CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En production, remplacer par les domaines autorisés
+    allow_origins=["https://thankful-stone-0c26cde03.6.azurestaticapps.net"],  # En production, remplacer par les domaines autorisés
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
