@@ -26,6 +26,7 @@ client = OpenAI(api_key=api_key)
 
 # 1) Modèle Pydantic pour ta lettre structurée
 class StructuredLetter(BaseModel):
+    nom_prenom_client: str
     nom_prenom_adresse_client: str
     nom_de_l_affaire: str
     intro_lettre: str
@@ -43,14 +44,15 @@ def parser_lettre(claude_response: str):
     
     prompt_system="""
 
-    Ton rôle est de parser la lettre de mission d'un avocat pour en extraire un JSON structuré, SANS AUCUN TEXTE SUPERFLU, dans le format suivant : 
-    {\"nom_prenom_adresse_client\": \"...\",  (Exemple : **Monsieur Yves Dupont**\n4 avenue du chemin de fer,\n78100 saint Germain en Laye\)
+    Ton rôle est de parser la lettre de mission d'un avocat pour en extraire un JSON structuré, SANS AUCUN TEXTE SUPERFLU, dans le format suivant :
+    {\"nom_prenom_client\": \"...\", (Exemple : **Madame Anne Martin** et **Monsieur Yves Dupont**)
+    \"nom_prenom_adresse_client\": \"...\",  (Exemple : **Monsieur Yves Dupont**\n4 avenue du chemin de fer,\n78100 saint Germain en Laye\)
     \"nom_de_l_affaire\": \"...\", (le nom de l'affaire)
     \"intro_lettre\": \"...\", (la breve introduction en début de lettre)
     \"contexte_et_obj\": \"...\", (le paragraphe sous "Contexte et Objectifs de la Mission"
     \"matiere_de_mission\": \"...\", (Ex : droit de la copropriété, droit de la famille)
-    \"liste_missions\": \"...\", (Le paragraphe sous "Descriptif de nos missions"
-    \"honoraires\": \"...\"}. (Le paragraphe sous "Honoraires"
+    \"liste_missions\": \"...\", (Le paragraphe sous "Descriptif de nos missions", jusqu'à la matière de mission, comprise)
+    \"honoraires\": \"...\"}. (Le paragraphe sous "Honoraires")
 
      Lorsqu’un passage important apparaît dans la lettre (noms, dates, montants, etc.), entoure-le de doubles astérisques pour le mettre en gras. 
    - Par exemple, si la lettre mentionne : “Monsieur Yves Dupont”, tu l’écriras dans la clé correspondante comme : “**Monsieur Yves Dupont**”.

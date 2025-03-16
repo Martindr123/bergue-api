@@ -120,6 +120,7 @@ def generate_doc_in_background(job_id, file_bytes, extension, description_missio
         date_formatee = format_date(today, format='d MMMM yyyy', locale='fr_FR')
 
         context = {
+            "nom_prenom_client" : convert_asterisks_to_rich_text(parsed_answer.nom_prenom_client),
             "nom_prenom_adresse_client": convert_asterisks_to_rich_text(parsed_answer.nom_prenom_adresse_client),
             "date_envoi_lettre": date_formatee,
             "contexte_et_obj": convert_asterisks_to_rich_text(parsed_answer.contexte_et_obj),
