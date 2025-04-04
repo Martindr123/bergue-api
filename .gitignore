@@ -1,5 +1,5 @@
 # .gitignore
-
+env/
 # Ignorer les fichiers .env (où on stocke les secrets)
 .env
 .env.local
